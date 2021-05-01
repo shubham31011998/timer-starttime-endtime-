@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1 id="demo"></h1>
+    <script>
+        //End time   
+        var countDownDate = 1619842200;
+        var startDate = 1619842080;
+
+        var x = setInterval(function() {
+
+            if (Math.floor((new Date()).getTime() / 1000) >= startDate && Math.floor((new Date()).getTime() / 1000) <= countDownDate) {
+                var now = Math.floor((new Date()).getTime() / 1000);
+
+                var distance = countDownDate - now;
+
+                // Time calculations for days, hours, minutes and seconds
+                var days = Math.floor(distance / (60 * 60 * 24));
+                var hours = Math.floor((distance % (60 * 60 * 24)) / (60 * 60));
+                var minutes = Math.floor((distance % (60 * 60)) / (60));
+                var seconds = Math.floor((distance % (60)));
+
+                // Output the result in an element with id="demo"
+                document.getElementById("demo").innerHTML = days + "d" + ":" + hours + "h" + ":" + minutes + "m" + ":" + seconds + "s";
+
+
+                if (distance < 0) {
+                    setInterval(x);
+                    document.getElementById("demo").innerHTML = "EXPIRED";
+                }
+            } else {
+                document.getElementById("demo").innerHTML = "00:00:00:00";
+            }
+
+
+        }, 100);
+    </script>
+</body>
+
+</html>
